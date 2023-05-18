@@ -1,0 +1,439 @@
+%%=======================================================================
+% !Mode:: "TeX:UTF-8"
+% !TEX program  = XeLaTeX
+%%=======================================================================
+% 模板名称：zafu-beamer
+% 模板版本：V0.1.0
+% 模板作者：rogeryoungh
+% 联系作者：rogeryoungh@foxmail
+% 模板适用：浙江农林大学风格 Beamer 模板
+% 模板编译：手动编译方法参看 README.md
+% 更新时间：2023/05/18
+% 模板帮助：推荐前往模板的 GitHub 仓库获取最新文件，地址：
+%           https://github.com/rogeryoungh/zafu-beamer-theme
+%%=======================================================================
+
+% \documentclass{beamer}
+% \usepackage{ctex, hyperref}
+
+\documentclass{ctexbeamer}
+% \documentclass[aspectratio=169]{ctexbeamer} % 设置长宽比为 16:9
+\setCJKmainfont[BoldFont={Noto Serif CJK SC Bold},ItalicFont={Noto Sans CJK SC}]{Noto Serif CJK SC}
+\setCJKsansfont{Noto Sans CJK SC}
+\usefonttheme[onlymath]{serif}
+\usepackage[T1]{fontenc}
+
+% other packages
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine,hologo,hyperref}
+
+\definecolor{linkcolor}{rgb}{0.5,0,0}
+\definecolor{frenchplum}{RGB}{190,20,83}
+
+\newcommand\mhref[2]{{\color{linkcolor}\href{#1}{#2}}}
+\newcommand\murl[1]{{\color{linkcolor} \url{#1}}}
+
+\author{\href{https://rogery.dev/}{rogeryoungh}}
+\title{ZAFU Beamer Theme}
+\subtitle{浙江农林大学风格 Beamer 模板}
+\institute{浙江农林大学 数学与计算机学院}
+\date{2023 年 5 月 18 日}
+\usetheme{ZAFU}
+
+% defs
+\def\cmd#1{\texttt{\color{red}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.5,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.45}
+
+\lstset{
+	basicstyle=\small\linespread{1.0}\ttfamily \lst@ifdisplaystyle\fi,
+	% Code
+	columns=fullflexible,
+	tabsize=3,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	breaklines=true,
+	numbers=left,
+	numbersep=10pt,
+	xleftmargin=2em,
+	stepnumber=1,
+	firstnumber=1,
+	numberfirstline=true,
+	% Code design
+	keywordstyle=\bfseries,
+	commentstyle=\color{codecolorcomments},
+	numberstyle=\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=t,
+	keepspaces=true,
+	%frame
+	frame=tb,
+	framerule=.5pt,
+	framexleftmargin=7mm,
+	rulecolor=\color{black},
+	%backgroundcolor=\color{codecolorbg},
+	abovecaptionskip=0pt,
+	belowcaptionskip=5pt,
+}
+
+\begin{document}
+
+% \kaishu
+% \sffamily
+\rmfamily
+\begin{frame}
+	\titlepage
+	\begin{figure}[htpb]
+		\begin{center}
+			\includegraphics[width=0.175\linewidth]{pic/zafu-logo.png}
+		\end{center}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\tableofcontents[sectionstyle=show,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+
+\section{在前面的话}
+
+\begin{frame}{什么是 beamer}
+	\begin{itemize}
+		\item \LaTeX{} 是一种排版软件，由于公式支持较好，广泛的应用于数学、物理、计算机等方向的理工科学术界。
+		\item Beamer 是 \LaTeX{} 的一种文档类，适合演讲，主要用于学术报告。
+		\item Beamer 填充内容比较方便，因为你多半已经有了一份 \LaTeX{} 格式的论文源码，重新录入到 PPT 远比 beamer 麻烦。
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{为什么要使用 beamer}
+	\begin{itemize}
+		\item 学术性质的报告更加注重内容本身，而非花哨的动画，要求简洁直观。
+		\item 用 Beamer 可以强制用户把内容提炼成要点以 itemize 的结构展示出来。
+		\item 强制用户定义清晰的文章结构，有助于养成良好的论文写作习惯。
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{为什么要使用 beamer}
+	\begin{itemize}
+		\item \LaTeX 广泛用于学术界，期刊会议论文模板
+	\end{itemize}
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{c|c}
+			Microsoft\textsuperscript{\textregistered}  Word & \LaTeX        \\
+			\hline
+			文字处理工具                                           & 专业排版软件        \\
+			容易上手，简单直观                                        & 容易上手          \\
+			所见即所得                                            & 所见即所想，所想即所得   \\
+			高级功能不易掌握                                         & 进阶难，但一般用不到    \\
+			处理长文档需要丰富经验                                      & 和短文档处理基本无异    \\
+			花费大量时间调格式                                        & 无需担心格式，专心作者内容 \\
+			公式排版差强人意                                         & 尤其擅长公式排版      \\
+			二进制格式，兼容性差                                       & 文本文件，易读、稳定    \\
+			付费商业许可                                           & 自由免费使用        \\
+		\end{tabular}
+	\end{table}
+\end{frame}
+
+\begin{frame}{为什么要使用 beamer}
+	\begin{itemize} % [<+-| alert@+>] % 当然，除了alert，手动在里面插 \pause 也行
+		\item 因为专业原因我需要使用 \LaTeX{}，也有做报告的需求。
+		\item 许多学校都有自己的 beamer主题，我就抄来了一份。 \pause
+		\item 请使用基于\hologo{XeLaTeX} 编译，支持中文。
+		\item GitHub项目地址位于 \murl{https://github.com/rogeryoungh/zafu-beamer-theme}，如果有 bug 或者功能请求可以去里面提 issue。
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{参考模板}
+	\begin{itemize}
+		\item 在魔改样式的过程中，参考了不少优秀模板，非常感谢。
+		\item \mhref{https://github.com/inFaaa/PKU-Beamer-Theme}{PKU Beamer}，inFaaa。
+		\item \mhref{https://github.com/tuna/THU-Beamer-Theme}{THU Beamer}，Trinkle23897。
+		\item \mhref{https://github.com/JinLingxi/Cumtb-Beamer}{CUMTB Beamer}，槿灵兮。
+		\item \mhref{https://github.com/fuujiro/DLUT-Beamer-Slide-V2}{DLUT Beamer}，fuujiro。
+		\item 为了实现一校一Beamer而努力！\cite{origin}
+	\end{itemize}
+\end{frame}
+
+\section{简单介绍}
+
+\begin{frame}{这一份主题与源文件所给的原始的THU Beamer Theme区别在于}
+	\begin{block}{说明}
+		\begin{itemize}
+			\item 我偏好中文衬线字体。
+			\item 更多该模板的功能可以参考 \murl{https://www.latexstudio.net/archives/4051.html}
+			\item 下面列举出了一些 beamer 的用法，部分节选自 \murl{https://tuna.moe/event/2018/latex/}
+			\item 有关 \LaTeX{} 的学习可以查看 \murl{https://zhuanlan.zhihu.com/p/521649367}
+		\end{itemize}
+	\end{block}
+\end{frame}
+
+\subsection{排版举例}
+
+\begin{frame}{排版举例}
+	\begin{exampleblock}{无编号公式} % 加 * 
+		\begin{equation*}
+			J(\theta) = \mathbb{E}_{\pi_\theta}[G_t] = \sum_{s\in\mathcal{S}} d^\pi (s)V^\pi(s)=\sum_{s\in\mathcal{S}} d^\pi(s)\sum_{a\in\mathcal{A}}\pi_\theta(a|s)Q^\pi(s,a)
+		\end{equation*}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\begin{exampleblock}{多行多列公式\footnote{如果公式中有文字出现，请用 $\backslash$mathrm\{\} 或者 $\backslash$text\{\} 包含，不然就会变成 $clip$，在公式里看起来比 $\mathrm{clip}$ 丑非常多。}}
+		% 使用 & 分隔
+		\begin{align}
+			Q_\mathrm{target} & =r+\gamma Q^\pi(s^\prime, \pi_\theta(s^\prime)+\epsilon)  \\
+			\epsilon          & \sim\mathrm{clip}(\mathcal{N}(0, \sigma), -c, c)\nonumber
+		\end{align}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}
+	\begin{exampleblock}{编号多行公式}
+		% Taken from Mathmode.tex
+		\begin{multline}
+			A=\lim_{n\rightarrow\infty}\Delta x\left(a^{2}+\left(a^{2}+2a\Delta x+\left(\Delta x\right)^{2}\right)\right.\label{eq:reset}\\
+			+\left(a^{2}+2\cdot2a\Delta x+2^{2}\left(\Delta x\right)^{2}\right)\\
+			+\left(a^{2}+2\cdot3a\Delta x+3^{2}\left(\Delta x\right)^{2}\right)\\
+			+\ldots\\
+			\left.+\left(a^{2}+2\cdot(n-1)a\Delta x+(n-1)^{2}\left(\Delta x\right)^{2}\right)\right)\\
+			=\frac{1}{3}\left(b^{3}-a^{3}\right)
+		\end{multline}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}{图形与分栏}
+	% From thuthesis user guide.
+	\begin{minipage}[c]{0.3\linewidth}
+		\psset{unit=0.8cm}
+		\begin{pspicture}(-1.75,-3)(3.25,4)
+			\psline[linewidth=0.25pt](0,0)(0,4)
+			\rput[tl]{0}(0.2,2){$\vec e_z$}
+			\rput[tr]{0}(-0.9,1.4){$\vec e$}
+			\rput[tl]{0}(2.8,-1.1){$\vec C_{ptm{ext}}$}
+			\rput[br]{0}(-0.3,2.1){$\theta$}
+			\rput{25}(0,0){%
+				\psframe[fillstyle=solid,fillcolor=lightgray,linewidth=.8pt](-0.1,-3.2)(0.1,0)}
+			\rput{25}(0,0){%
+				\psellipse[fillstyle=solid,fillcolor=yellow,linewidth=3pt](0,0)(1.5,0.5)}
+			\rput{25}(0,0){%
+				\psframe[fillstyle=solid,fillcolor=lightgray,linewidth=.8pt](-0.1,0)(0.1,3.2)}
+			\rput{25}(0,0){\psline[linecolor=red,linewidth=1.5pt]{->}(0,0)(0.,2)}
+			%           \psRotation{0}(0,3.5){$\dot\phi$}
+			%           \psRotation{25}(-1.2,2.6){$\dot\psi$}
+			\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(0,2)
+			\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(3,-1)
+			\psline[linecolor=red,linewidth=1.25pt]{->}(0,0)(2.85,-0.95)
+			\psarc{->}{2.1}{90}{112.5}
+			\rput[bl](.1,.01){C}
+		\end{pspicture}
+	\end{minipage}\hspace{1cm}
+	\begin{minipage}{0.5\linewidth}
+		\medskip
+		%\hspace{2cm}
+		\begin{figure}[h]
+			\centering
+			\includegraphics[height=.5\textheight]{pic/zafu-logo.png}
+		\end{figure}
+	\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 常用命令}
+	\begin{exampleblock}{命令}
+		\centering
+		\footnotesize
+		\begin{tabular}{llll}
+			\cmd{chapter}   & \cmd{section} & \cmd{subsection} & \cmd{paragraph}       \\
+			章               & 节             & 小节               & 带题头段落                 \\\hline
+			\cmd{centering} & \cmd{emph}    & \cmd{verb}       & \cmd{url}             \\
+			居中对齐            & 强调            & 原样输出             & 超链接                   \\\hline
+			\cmd{footnote}  & \cmd{item}    & \cmd{caption}    & \cmd{includegraphics} \\
+			脚注              & 列表条目          & 标题               & 插入图片                  \\\hline
+			\cmd{label}     & \cmd{cite}    & \cmd{ref}                                \\
+			标号              & 引用参考文献        & 引用图表公式等                                  \\\hline
+		\end{tabular}
+	\end{exampleblock}
+	\begin{exampleblock}{环境}
+		\centering
+		\footnotesize
+		\begin{tabular}{lll}
+			\env{table}   & \env{figure}    & \env{equation}    \\
+			表格            & 图片              & 公式                \\\hline
+			\env{itemize} & \env{enumerate} & \env{description} \\
+			无编号列表         & 编号列表            & 描述                \\\hline
+		\end{tabular}
+	\end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 环境命令举例}
+	\begin{minipage}{0.5\linewidth}
+		\begin{lstlisting}[language=TeX]
+\begin{itemize}
+  \item A \item B
+  \item C
+  \begin{itemize}
+    \item C-1
+  \end{itemize}
+\end{itemize}
+\end{lstlisting}
+	\end{minipage}\hspace{1cm}
+	\begin{minipage}{0.3\linewidth}
+		\begin{itemize}
+			\item A
+			\item B
+			\item C
+			\begin{itemize}
+				\item C-1
+			\end{itemize}
+		\end{itemize}
+	\end{minipage}
+	\medskip
+\end{frame}
+
+
+\begin{frame}[fragile]
+	\begin{minipage}{0.5\linewidth}
+		\begin{lstlisting}[language=TeX]
+\begin{enumerate}
+  \item 巨佬 \item 大佬
+  \item 萌新
+  \begin{itemize}
+    \item 萌新
+    \item[n+e] 瑟瑟发抖
+  \end{itemize}
+\end{enumerate}
+\end{lstlisting}
+	\end{minipage}\hspace{1cm}
+	\begin{minipage}{0.3\linewidth}
+		\begin{enumerate}
+			\item 巨佬
+			\item 大佬
+			\item 萌新
+			\begin{itemize}
+				\item 萌新
+				\item[n+e] 瑟瑟发抖
+			\end{itemize}
+		\end{enumerate}
+	\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]{\LaTeX{} 数学公式}
+	\begin{columns}
+		\begin{column}{.55\textwidth}
+			\begin{lstlisting}[language=TeX]
+$V = \frac{4}{3}\pi r^3$
+
+\[
+  V = \frac{4}{3}\pi r^3
+\]
+
+\begin{equation}
+  \label{eq:vsphere}
+  V = \frac{4}{3}\pi r^3
+\end{equation}
+\end{lstlisting}
+		\end{column}
+		\begin{column}{.4\textwidth}
+			$V = \frac{4}{3}\pi r^3$
+			\[
+				V = \frac{4}{3}\pi r^3
+			\]
+			\begin{equation}
+				\label{eq:vsphere}
+				V = \frac{4}{3}\pi r^3
+			\end{equation}
+		\end{column}
+	\end{columns}
+	\begin{itemize}
+		\item 更多内容请看 \href{https://zh.wikipedia.org/wiki/Help:数学公式}{\color{purple}{这里}}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+	\begin{columns}
+		\column{.6\textwidth}
+		\begin{lstlisting}[language=TeX]
+\begin{table}[htbp]
+\caption{编号与含义}
+\label{tab:number}
+\centering
+\begin{tabular}{cl}
+    \toprule
+    编号 & 含义 \\
+    \midrule
+    1 & 4.0 \\
+    2 & 3.7 \\
+    \bottomrule
+\end{tabular}
+\end{table}
+公式~(\ref{eq:vsphere}) 的
+编号与含义请参见
+表~\ref{tab:number}。
+\end{lstlisting}
+		\column{.4\textwidth}
+		\begin{table}[htpb]
+			\centering
+			\caption{编号与含义}
+			\label{tab:number}
+			\begin{tabular}{cl}\toprule
+				编号 & 含义  \\\midrule
+				1  & 4.0 \\
+				2  & 3.7 \\\bottomrule
+			\end{tabular}
+		\end{table}
+		\normalsize 公式~(\ref{eq:vsphere})的编号与含义请参见表~\ref{tab:number}。
+	\end{columns}
+\end{frame}
+
+\begin{frame}{作图}
+	\begin{itemize}
+		\item 矢量图建议 PDF，基本上软件都能导出 PDF，一些远古教程还有 EPS、PS 等格式。 
+		\item 标量图 png, jpg, tiff……提高清晰度，避免发虚。
+	\end{itemize}
+	\begin{figure}[htpb]
+		\centering
+		\includegraphics[width=0.2\linewidth]{pic/zafu-logo.png}
+		\caption{这个校徽虽然不是矢量图，但还挺清楚。}
+	\end{figure}
+\end{frame}
+
+\section{There Is No Largest Prime Number}
+
+\begin{frame}
+	\frametitle{There Is No Largest Prime Number}
+	\framesubtitle{The proof uses \textit{reductio ad absurdum}.}
+	\begin{theorem}\normalfont \rmfamily
+	  There is no largest prime number.
+	\end{theorem} \pause
+	\begin{proof}
+	  \begin{enumerate}
+		\item<2->Suppose $p$ were the largest prime number.
+		\item<3->Let $q$ be the product of the first $p$ numbers.
+		\item<4->Then $q + 1$ is not divisible by any of them.
+		\item<5->But $q + 1$ is greater than $1$, thus divisible by some prime number not in the first $p$ numbers.\qedhere
+	  \end{enumerate}
+	\end{proof}
+	\uncover<5->{The proof used \textit{reductio ad absurdum}.}
+\end{frame}
+
+\section{参考文献}
+\begin{frame}[allowframebreaks]
+	\bibliography{ref}
+	\bibliographystyle{alpha}
+	% 如果参考文献太多的话，可以像下面这样调整字体：
+	% \tiny\bibliographystyle{alpha}
+\end{frame}
+
+\begin{frame}{结语}
+	\begin{center}
+		{\Huge\calligra Thanks!}
+	\end{center}
+\end{frame}
+
+\end{document}
